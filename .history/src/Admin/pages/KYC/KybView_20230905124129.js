@@ -1,0 +1,56 @@
+/** @format */
+
+import React, { useCallback, useEffect, useState } from "react";
+import { Table, Alert, Spinner } from "react-bootstrap";
+import axios from "axios";
+import { toast } from "react-toastify";
+import HOC from "../../layout/HOC";
+import { Link, useParams } from "react-router-dom";
+
+const KybView = () => {
+  const { id } = useParams();
+  const [data, setData] = useState({});
+  const token = localStorage.getItem("token");
+
+  const Auth = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const fetchData = async () => {
+    try {
+      const { data } = await axios.get(
+        `https://ecommerce-backend-ochre-phi.vercel.app/api/v1/getIdvendorKyb/${id}`,
+        Auth
+      );
+      console.log(data);
+    } catch {}
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  return (
+    <>
+      <section>
+        <div
+          className="pb-4   w-full flex justify-between items-center"
+          style={{ width: "98%", marginLeft: "2%" }}
+        >
+          <span
+            className="tracking-widest text-slate-900 font-semibold uppercase"
+            style={{ fontSize: "1.5rem" }}
+          >
+            KYB
+          </span>
+        </div>
+
+        <section className="sectionCont"></section>
+      </section>
+    </>
+  );
+};
+
+export default HOC(KybView);
