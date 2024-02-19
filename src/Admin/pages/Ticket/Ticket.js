@@ -22,7 +22,7 @@ const Ticket = () => {
     setLoading(true);
     try {
       const { data } = await axios.get(
-        "https://ecommerce-backend-ochre-phi.vercel.app/api/v1/admin/ticket/listTicket",
+        "https://alam-project-backend.vercel.app/api/v1/admin/ticket/listTicket",
         Auth
       );
       setData(data.data);
@@ -41,7 +41,7 @@ const Ticket = () => {
   const closehandler = async (id) => {
     try {
       const response = await axios.put(
-        `https://ecommerce-backend-ochre-phi.vercel.app/api/v1/admin/closeTicket/${id}`,
+        `https://alam-project-backend.vercel.app/api/v1/admin/closeTicket/${id}`,
         {},
         Auth
       );

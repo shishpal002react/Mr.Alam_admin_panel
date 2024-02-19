@@ -60,7 +60,7 @@ const Notification = () => {
     const fetchUser = async () => {
       try {
         const res = await axios.get(
-          "https://ecommerce-backend-ochre-phi.vercel.app/api/v1/admin/getAllUser"
+          "https://alam-project-backend.vercel.app/api/v1/admin/getAllUser"
         );
         setUsers(res.data.data);
       } catch {}
@@ -69,7 +69,7 @@ const Notification = () => {
     const fetchProducts = async () => {
       try {
         const res = await axios.get(
-          "https://ecommerce-backend-ochre-phi.vercel.app/api/v1/admin/Product/list?page=1&limit=10&search=&toDate=null&fromDate=null&categoryId=&subcategoryId="
+          "https://alam-project-backend.vercel.app/api/v1/admin/Product/list?page=1&limit=10&search=&toDate=null&fromDate=null&categoryId=&subcategoryId="
         );
         setProducts(res.data.data.docs);
       } catch {}
@@ -92,7 +92,7 @@ const Notification = () => {
       setSubmitLoading(true);
       try {
         const { data } = await axios.post(
-          "https://ecommerce-backend-ochre-phi.vercel.app/api/v1/notification/sendNotification",
+          "https://alam-project-backend.vercel.app/api/v1/notification/sendNotification",
           payload,
           Auth
         );

@@ -100,6 +100,11 @@ const Sidebar = ({ hamb, setHamb }) => {
       link: "/admin/COD",
       name: "COD",
     },
+    {
+      icon: <i className=" fa-solid fa-money-bill text-xl mr-3 rounded-full " />,
+      link: "/Contect",
+      name: "Contect",
+    },
   ];
 
   const logOut = () => {

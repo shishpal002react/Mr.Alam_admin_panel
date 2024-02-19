@@ -24,7 +24,7 @@ const Coupon = () => {
     setLoading(true);
     try {
       const { data } = await axios.get(
-        "https://ecommerce-backend-ochre-phi.vercel.app/api/v1/Coupan/listCoupan",
+        "https://alam-project-backend.vercel.app/api/v1/Coupan/listCoupan",
         Auth
       );
       setData(data.service);
@@ -43,7 +43,7 @@ const Coupon = () => {
   const deleteHandler = async (id) => {
     try {
       const { data } = await axios.delete(
-        `https://ecommerce-backend-ochre-phi.vercel.app/api/v1/Coupan/${id}`,
+        `https://alam-project-backend.vercel.app/api/v1/Coupan/${id}`,
         Auth
       );
       toast.success(data.message);
@@ -78,7 +78,7 @@ const Coupon = () => {
       setSubmitLoading(true);
       try {
         const { data } = await axios.post(
-          "https://ecommerce-backend-ochre-phi.vercel.app/api/v1/Coupan/addCoupan",
+          "https://alam-project-backend.vercel.app/api/v1/Coupan/addCoupan",
           payload,
           Auth
         );

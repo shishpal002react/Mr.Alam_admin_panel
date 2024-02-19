@@ -43,6 +43,7 @@ import ReturnOrder from "./Admin/pages/Order/ReturnOrder";
 import Ticket from "./Admin/pages/Ticket/Ticket";
 import COD from "./Admin/pages/COD/COD";
 import VReturnOrder from "./Vendor/pages/Order/VReturnOrder";
+import Contect from "./Admin/pages/Contect/Contect";
 // ----------------
 function App() {
   return (
@@ -92,6 +93,7 @@ function App() {
         <Route path="/admin/kyb" element={<Kyb />} />
         <Route path="/coupon" element={<Coupon />} />
         <Route path="/notification" element={<Notification />} />
+        <Route path="/contect" element={<Contect />} />
         <Route path="/kyb-view/:id" element={<KybView />} />
         <Route path="/return-order" element={<ReturnOrder />} />
         <Route path="/admin/ticket" element={<Ticket />} />
