@@ -24,7 +24,7 @@ const AdminBanner = () => {
   const [editData, setEditData] = useState({});
   const [loading, setLoading] = useState(false);
 
-  const Baseurl = "https://ecommerce-backend-ochre-phi.vercel.app/";
+  const Baseurl = "https://alam-project-backend.vercel.app/";
   const token = localStorage.getItem("token");
   const Auth = {
     headers: {
@@ -61,6 +61,7 @@ const AdminBanner = () => {
         `${Baseurl}api/v1/Banner/${payload}`,
         Auth
       );
+      toast.success("Banner Delete Successfully");
       fetchData();
     } catch (e) {
       console.log(e);
@@ -80,21 +81,21 @@ const AdminBanner = () => {
     payload.append("image", image);
     payload.append("desc", desc);
     payload.append("type", type);
-    payload.append("productId", productId);
+    // payload.append("productId", productId);
 
-    const fetchProducts = async () => {
-      try {
-        const res = await axios.get(`${Baseurl}api/v1/user/Product/list`);
-        const data = res.data.data.docs;
-        setProducts(data);
-      } catch {}
-    };
+    // const fetchProducts = async () => {
+    //   try {
+    //     const res = await axios.get(`${Baseurl}api/v1/user/Product/list`);
+    //     const data = res.data.data.docs;
+    //     setProducts(data);
+    //   } catch {}
+    // };
 
-    useEffect(() => {
-      if (props.show === true) {
-        fetchProducts();
-      }
-    }, [props]);
+    // useEffect(() => {
+    //   if (props.show === true) {
+    //     fetchProducts();
+    //   }
+    // }, [props]);
 
     const postHandler = async (e) => {
       e.preventDefault();
@@ -191,18 +192,8 @@ const AdminBanner = () => {
               />
             </Form.Group>
 
-            <Form.Select
-              className="mb-3"
-              onChange={(e) => setProductId(e.target.value)}
-            >
-              <option>Select Product</option>
-              {products?.map((i, index) => (
-                <option key={index} value={i._id}>
-                  {" "}
-                  {i.productName}{" "}
-                </option>
-              ))}
-            </Form.Select>
+
+           
 
             <Button
               style={{
@@ -288,7 +279,7 @@ const AdminBanner = () => {
                     <th>No.</th>
                     <th>Name</th>
                     <th>Description</th>
-                    <th>Product</th>
+              
                     <th>Type</th>
                     <th></th>
                   </tr>
@@ -302,7 +293,7 @@ const AdminBanner = () => {
                         <img src={i.image} alt="" style={{ width: "80px" }} />
                       </td>
                       <td>{i.desc} </td>
-                      <td> {i.productId?.productName} </td>
+                    
                       <td> {i.type} </td>
                       <td>
                         <span className="flexCont">

@@ -30,6 +30,8 @@ const AdminCategory = () => {
   const [modalShow2, setModalShow2] = useState(false);
   const [loading, setLoading] = useState(false);
 
+
+
   const FinalFromDate =
     fromDate === null || fromDate?.length < 5
       ? null
@@ -62,11 +64,28 @@ const AdminCategory = () => {
     },
   };
 
+  
+  const getProduct=async()=>{
+    try {
+      const { data } = await axios.get(
+        `https://alam-project-backend.vercel.app/api/v1/Category/allCategory`,
+        Auth
+      );
+     setData(data?.data);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  useEffect(()=>{
+    getProduct();
+  },[])
+
   const fetchData = useCallback(async () => {
     setLoading(true);
     try {
       const { data } = await axios.get(
-        `https://ecommerce-backend-ochre-phi.vercel.app/api/v1/Category/paginateCategoriesSearch?page=${page}&limit=${limit}&search=${search}&toDate=${FinalToDate}&fromDate=${FinalFromDate}`
+        `https://alam-project-backend.vercel.app/api/v1/Category/paginateCategoriesSearch?page=${page}&limit=${limit}&search=${search}&toDate=${FinalToDate}&fromDate=${FinalFromDate}`
       );
       setData(data.data.docs);
       setTotal(data.data.total);
@@ -91,10 +110,11 @@ const AdminCategory = () => {
   const deleteHandler = async (id) => {
     try {
       const { data } = await axios.delete(
-        `https://ecommerce-backend-ochre-phi.vercel.app/api/v1/Category/deleteCategory/${id}`,
+        `https://alam-project-backend.vercel.app/api/v1/Category/deleteCategory/${id}`,
         Auth
       );
       toast.success(data.message);
+      getProduct();
       fetchData();
     } catch (e) {
       console.log(e);
@@ -104,22 +124,27 @@ const AdminCategory = () => {
   function MyVerticallyCenteredModal(props) {
     const [name, setName] = useState(editData?.name);
     const [gender, setGender] = useState(editData?.gender);
+    const [image,setImage]=useState("");
     const [errMsg, setErrMsg] = useState(null);
     const [submitLoading, setSubmitLoading] = useState(false);
 
-    const payload = { name, gender };
+    const formData=new FormData();
+    formData.append("name",name);
+    formData.append("gender",gender);
+    formData.append("image",image)
 
     const postHandler = async (e) => {
       e.preventDefault();
       setSubmitLoading(true);
       try {
         const { data } = await axios.post(
-          "https://ecommerce-backend-ochre-phi.vercel.app/api/v1/Category/addCategory",
-          payload,
+          "https://alam-project-backend.vercel.app/api/v1/Category/addCategory",
+          formData,
           Auth
         );
         toast.success(data.message);
         props.onHide();
+        getProduct();
         fetchData();
         setSubmitLoading(false);
       } catch (e) {
@@ -134,12 +159,13 @@ const AdminCategory = () => {
       setSubmitLoading(true);
       try {
         const { data } = await axios.put(
-          `https://ecommerce-backend-ochre-phi.vercel.app/api/v1/Category/updateCategory/${id}`,
-          payload,
+          `https://alam-project-backend.vercel.app/api/v1/Category/updateCategory/${id}`,
+          formData,
           Auth
         );
         toast.success(data.message);
         props.onHide();
+        getProduct();
         fetchData();
         setSubmitLoading(false);
       } catch (e) {
@@ -172,6 +198,13 @@ const AdminCategory = () => {
           )}
 
           <Form onSubmit={edit ? putHandler : postHandler}>
+          <Form.Group className="mb-3">
+              <Form.Label>Categorie Image</Form.Label>
+              <Form.Control
+                type="file"
+                onChange={(e) => setImage(e.target.files[0])}
+              />
+            </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Name</Form.Label>
               <Form.Control
@@ -241,6 +274,7 @@ const AdminCategory = () => {
         );
         toast.success(data.message);
         props.onHide();
+        getProduct();
         fetchData();
         setSubmitLoading(false);
       } catch (e) {
@@ -396,6 +430,7 @@ const AdminCategory = () => {
                   <thead>
                     <tr>
                       <th>No.</th>
+                      <th>Category Image</th>
                       <th>Name</th>
                       <th>Type</th>
                       <th>Status</th>
@@ -408,6 +443,7 @@ const AdminCategory = () => {
                     {data?.map((i, index) => (
                       <tr key={index}>
                         <td>#{index + 1} </td>
+                        <td style={{height:"50px",width:"50px"}}><img src={i?.image}></img></td>
                         <td>{i.name}</td>
                         <td>{i.gender} </td>
                         <td> {BadgeSelector(i.approvalStatus)} </td>

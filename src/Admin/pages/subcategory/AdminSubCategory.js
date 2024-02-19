@@ -53,11 +53,27 @@ const AdminSubCategory = () => {
     },
   };
 
+  const getProduct=async()=>{
+    try {
+      const { data } = await axios.get(
+        `https://alam-project-backend.vercel.app/api/v1/SubCategory/all/Subcategory`,
+        Auth
+      );
+     setData(data?.data);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  useEffect(()=>{
+    getProduct();
+  },[])
+
   const fetchData = useCallback(async () => {
     setLoading(true);
     try {
       const { data } = await axios.get(
-        `https://ecommerce-backend-ochre-phi.vercel.app/api/v1/SubCategory/paginate/SubCategoriesSearch?page=${page}&limit=${limit}&search=${search}&toDate=${FinalToDate}&fromDate=${FinalFromDate}`
+        `https://alam-project-backend.vercel.app/api/v1/SubCategory/paginate/SubCategoriesSearch?page=${page}&limit=${limit}&search=${search}&toDate=${FinalToDate}&fromDate=${FinalFromDate}`
       );
       setData(data.data.docs);
       setTotal(data.data.total);
@@ -82,7 +98,7 @@ const AdminSubCategory = () => {
   const deleteHandler = async (id) => {
     try {
       const { data } = await axios.delete(
-        `https://ecommerce-backend-ochre-phi.vercel.app/api/v1/SubCategory/deleteSubcategory/${id}`,
+        `https://alam-project-backend.vercel.app/api/v1/SubCategory/deleteSubcategory/${id}`,
         Auth
       );
       toast.success("Deleted Successfully");
@@ -107,7 +123,7 @@ const AdminSubCategory = () => {
     const fetchCat = async () => {
       try {
         const res = await axios.get(
-          "https://ecommerce-backend-ochre-phi.vercel.app/api/v1/Category/allCategory"
+          "https://alam-project-backend.vercel.app/api/v1/Category/allCategory"
         );
         setCategoryArr(res.data.data);
       } catch {}
@@ -124,7 +140,7 @@ const AdminSubCategory = () => {
       setSubmitLoading(true);
       try {
         const { data } = await axios.post(
-          "https://ecommerce-backend-ochre-phi.vercel.app/api/v1/SubCategory/addSubcategory",
+          "https://alam-project-backend.vercel.app/api/v1/SubCategory/addSubcategory",
           fd,
           Auth
         );
@@ -144,7 +160,7 @@ const AdminSubCategory = () => {
       setSubmitLoading(true);
       try {
         const { data } = await axios.put(
-          `https://ecommerce-backend-ochre-phi.vercel.app/api/v1/SubCategory/updateSubcategory/${id}`,
+          `https://alam-project-backend.vercel.app/api/v1/SubCategory/updateSubcategory/${id}`,
           fd,
           Auth
         );
@@ -335,13 +351,13 @@ const AdminSubCategory = () => {
                       <td>#{index + 1} </td>
                       <td>
                         <img
-                          src={i.image}
+                          src={i?.subCategory?.image}
                           alt=""
                           style={{ maxWidth: "80px" }}
                         />
                       </td>
                       <td>{i.name}</td>
-                      <td>{i.categoryId?.name} </td>
+                      <td>{i.category?.name} </td>
                       <td>
                         <span className="flexCont">
                           <i

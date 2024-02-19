@@ -31,7 +31,7 @@ const Notification = () => {
     setLoading(true)
     try {
       const { data } = await axios.get(
-        "https://ecommerce-backend-ochre-phi.vercel.app/api/v1/notification/allNotification",
+        "https://alam-project-backend.vercel.app/api/v1/notification/allNotification",
         Auth
       );
       setData(data.data);
@@ -251,7 +251,7 @@ const Notification = () => {
                   <tr>
                     <th>Sno.</th>
                     <th>User</th>
-                    <th> Product </th>
+                    <th> UserType </th>
                     <th> Title </th>
                     <th> Date </th>
                   </tr>
@@ -262,7 +262,8 @@ const Notification = () => {
                     <tr key={index}>
                       <td>#{index + 1} </td>
                       <td>{i.userId?.fullName}</td>
-                      <td>{i.productId?.productName}</td>
+                      <td>{i.userId?.userType}</td>
+                   
                       <td> {i.title} </td>
                       <td> {i.date} </td>
                     </tr>
