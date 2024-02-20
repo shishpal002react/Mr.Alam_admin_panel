@@ -25,7 +25,7 @@ const AdminOrder = () => {
     setLoading(true)
     try {
       const { data } = await axios.get(
-        "https://ecommerce-backend-ochre-phi.vercel.app/api/v1/admin/Orders",
+        "https://alam-project-backend.vercel.app/api/v1/admin/Orders",
         Auth
       );
       setData(data.data);
@@ -51,12 +51,13 @@ const AdminOrder = () => {
       setSubmitLoading(true);
       try {
         const response = await axios.put(
-          `https://ecommerce-backend-ochre-phi.vercel.app/api/v1/order/changeOrderStatus/${id}`,
+          `https://alam-project-backend.vercel.app/api/v1/order/changeOrderStatus/${id}`,
           { orderStatus },
           Auth
         );
         toast.success("Status Updated Successfully");
         setSubmitLoading(false);
+        setModalShow(false)
         fetchData()
       } catch (e) {
         setSubmitLoading(false);

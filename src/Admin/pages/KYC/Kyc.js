@@ -24,7 +24,7 @@ const Kyc = () => {
     setLoading(true);
     try {
       const { data } = await axios.get(
-        "https://ecommerce-backend-ochre-phi.vercel.app/api/v1/admin/KycList",
+        "https://alam-project-backend.vercel.app/api/v1/admin/KycList",
         Auth
       );
       setData(data.data);
@@ -52,7 +52,7 @@ const Kyc = () => {
       setSubmitLoading(true);
       try {
         const { data } = await axios.put(
-          `https://ecommerce-backend-ochre-phi.vercel.app/api/v1/kyc/vendorKycVerification`,
+          `https://alam-project-backend.vercel.app/api/v1/kyc/vendorKycVerification`,
           payload,
           Auth
         );

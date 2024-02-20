@@ -23,7 +23,7 @@ const Vendor = () => {
     setLoading(true)
     try {
       const { data } = await axios.get(
-        "https://ecommerce-backend-ochre-phi.vercel.app/api/v1/admin/getAllVendor"
+        "https://alam-project-backend.vercel.app/api/v1/admin/getAllVendor"
       );
       setData(data.data);
       setTotal(data.data.length);
@@ -40,7 +40,7 @@ const Vendor = () => {
   const deleteHandler = async (id) => {
     try {
       const { data } = await axios.delete(
-        `https://ecommerce-backend-ochre-phi.vercel.app/api/v1/admin/${id}`,
+        `https://alam-project-backend.vercel.app/api/v1/admin/${id}`,
         Auth
       );
       toast.success(data.message);

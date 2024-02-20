@@ -107,6 +107,7 @@ const Contect = () => {
       } catch (e) {
         const msg = e.response.data.message;
         setErrMsg(msg);
+        fetchData()
         setSubmitLoading(false);
       }
     };
@@ -378,10 +379,10 @@ const Contect = () => {
                         <td>Basketball</td>
                       <td>{data?.basketball} </td>
                     </tr>
-                    {/* <tr >
+                    <tr >
                         <td>Map</td>
                       <td>{data?.map} </td>
-                    </tr> */}
+                    </tr>
                     <tr >
                         <td>Behance</td>
                       <td>{data?.behance} </td>

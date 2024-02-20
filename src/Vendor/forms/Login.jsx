@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { VscEyeClosed, VscEye } from "react-icons/vsc";
-import { AiOutlineMail } from "react-icons/ai";
+import { FaPhone } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Alert, Spinner } from "react-bootstrap";
@@ -20,19 +20,20 @@ const Login = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     setLoading(true);
+
     try {
       const { data } = await axios.post(
-        "https://ecommerce-backend-ochre-phi.vercel.app/api/v1/vendor/login/withPassword",
+        "https://alam-project-backend.vercel.app/api/v1/vendor/loginwithphone",
         {
-          email,
+          phone: email,
           password,
           userType: "VENDOR",
         }
       );
       localStorage.setItem("token", data.data.accessToken);
-      localStorage.setItem("AdminName" , email)
+      localStorage.setItem("AdminName", email)
       navigate("/dashboard");
-      toast.success("Welcome Admin");
+      toast.success("Welcome Vender");
       setLoading(false);
     } catch (err) {
       setLoading(false);
@@ -60,13 +61,13 @@ const Login = () => {
 
             <div className="shadow-2xl sm:w-96 border border-[rgb(241,146,46)] space-x-4 flex items-center w-64  p-2 rounded-md">
               <input
-                type="email"
-                placeholder="admin@gmail.com"
+                type="text"
+                placeholder="Enter phone number"
                 required
                 onChange={(e) => setEmail(e.target.value)}
                 className="outline-none px-0.5  bg-transparent tracking-wider w-full"
               />
-              <AiOutlineMail className="text-xl " />
+              <FaPhone className="text-xl " />
             </div>
             <div className="shadow-2xl sm:w-96 border border-[rgb(241,146,46)] space-x-4 flex items-center w-64  p-2 rounded-md mt-3">
               <input
@@ -106,6 +107,12 @@ const Login = () => {
                 Admin Panel
               </button>
             </Link>
+            <div style={{ display: 'flex', justifyContent: "space-between", width: "100%" }}>
+              <p style={{ color: "blue", cursor: "pointer" }} onClick={() => navigate("/forget/password")}>Forget Password</p>
+              <p style={{ color: "blue", cursor: "pointer" }} onClick={() => navigate("/new/vender")}>Register New Vender</p>
+
+            </div>
+
           </section>
         </form>
       </div>

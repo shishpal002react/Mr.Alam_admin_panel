@@ -23,7 +23,7 @@ const User = () => {
     setLoading(true);
     try {
       const { data } = await axios.get(
-        "https://ecommerce-backend-ochre-phi.vercel.app/api/v1/admin/getAllUser"
+        "https://alam-project-backend.vercel.app/api/v1/admin/getAllUser"
       );
       setData(data.data);
       setTotal(data.data.length);
@@ -40,7 +40,7 @@ const User = () => {
   const deleteHandler = async (id) => {
     try {
       const { data } = await axios.delete(
-        `https://ecommerce-backend-ochre-phi.vercel.app/api/v1/admin/${id}`,
+        `https://alam-project-backend.vercel.app/api/v1/admin/${id}`,
         Auth
       );
       toast.success(data.message);
@@ -53,7 +53,7 @@ const User = () => {
   const change_status = async (id) => {
     try {
       const { data } = await axios.put(
-        `https://ecommerce-backend-ochre-phi.vercel.app/api/v1/admin/blockUnblockUser/${id}`, {},
+        `https://alam-project-backend.vercel.app/api/v1/admin/blockUnblockUser/${id}`, {},
         Auth
       );
       toast.success(data.message);

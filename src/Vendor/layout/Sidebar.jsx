@@ -40,7 +40,8 @@ const Sidebar = ({ hamb, setHamb }) => {
 
   let nav = [];
 
-  if (localStorage.getItem("profile_status") === "APPROVED") {
+  // if (localStorage.getItem("profile_status") === "APPROVED") {
+  if ("APPROVED" === "APPROVED") {
     nav = [
       {
         icon: <MdDashboardCustomize className="text-xl mr-3 rounded-full " />,

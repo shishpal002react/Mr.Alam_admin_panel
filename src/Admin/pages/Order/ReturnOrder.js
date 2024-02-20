@@ -25,7 +25,7 @@ const ReturnOrder = () => {
     setLoading(true);
     try {
       const { data } = await axios.get(
-        "https://ecommerce-backend-ochre-phi.vercel.app/api/v1/admin/getcancelReturnOrder",
+        "https://alam-project-backend.vercel.app/api/v1/admin/getcancelReturnOrder",
         Auth
       );
       setData(data.data);
@@ -51,7 +51,7 @@ const ReturnOrder = () => {
       setSubmitLoading(true);
       try {
         const response = await axios.put(
-          `https://ecommerce-backend-ochre-phi.vercel.app/api/v1/admin/acceptRejectCancelReturnOrder/${id}`,
+          `https://alam-project-backend.vercel.app/api/v1/admin/acceptRejectCancelReturnOrder/${id}`,
           { pickStatus },
           Auth
         );

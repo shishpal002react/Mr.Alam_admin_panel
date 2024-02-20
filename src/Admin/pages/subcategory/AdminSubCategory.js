@@ -56,7 +56,7 @@ const AdminSubCategory = () => {
   const getProduct=async()=>{
     try {
       const { data } = await axios.get(
-        `https://alam-project-backend.vercel.app/api/v1/SubCategory/all/Subcategory`,
+        `https://alam-project-backend.vercel.app/api/v1/SubCategory/all/SubCategoryForAdmin`,
         Auth
       );
      setData(data?.data);
@@ -103,6 +103,7 @@ const AdminSubCategory = () => {
       );
       toast.success("Deleted Successfully");
       fetchData();
+      getProduct();
     } catch (e) {
       console.log(e);
     }
@@ -111,7 +112,7 @@ const AdminSubCategory = () => {
   function MyVerticallyCenteredModal(props) {
     const [name, setName] = useState(editData?.name);
     const [categoryId, setCategoryId] = useState(editData?.categoryId?._id);
-    const [image, setImage] = useState("");
+    const [image, setImage] = useState(editData?.image);
     const [errMsg, setErrMsg] = useState(null);
     const [submitLoading, setSubmitLoading] = useState(false);
     const [categoryArr, setCategoryArr] = useState([]);
@@ -147,6 +148,7 @@ const AdminSubCategory = () => {
         toast.success(data.message);
         props.onHide();
         fetchData();
+        getProduct();
         setSubmitLoading(false);
       } catch (e) {
         const msg = e.response.data.message;
@@ -166,6 +168,8 @@ const AdminSubCategory = () => {
         );
         toast.success(data.message);
         props.onHide();
+        fetchData();
+        getProduct();
         fetchData();
         setSubmitLoading(false);
       } catch (e) {
@@ -351,13 +355,13 @@ const AdminSubCategory = () => {
                       <td>#{index + 1} </td>
                       <td>
                         <img
-                          src={i?.subCategory?.image}
+                          src={i?.image}
                           alt=""
                           style={{ maxWidth: "80px" }}
                         />
                       </td>
                       <td>{i.name}</td>
-                      <td>{i.category?.name} </td>
+                      <td>{i.categoryId?.name} </td>
                       <td>
                         <span className="flexCont">
                           <i

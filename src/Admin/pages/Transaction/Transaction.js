@@ -16,7 +16,7 @@ const Transaction = () => {
     setLoading(true);
     try {
       const { data } = await axios.get(
-        `https://ecommerce-backend-ochre-phi.vercel.app/api/v1/admin/allTransactionUser`
+        `https://alam-project-backend.vercel.app/api/v1/admin/allTransactionUser`
       );
       setData(data.data);
       setTotal(data.data.length);

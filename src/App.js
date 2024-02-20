@@ -44,6 +44,8 @@ import Ticket from "./Admin/pages/Ticket/Ticket";
 import COD from "./Admin/pages/COD/COD";
 import VReturnOrder from "./Vendor/pages/Order/VReturnOrder";
 import Contect from "./Admin/pages/Contect/Contect";
+import RegisterNewVender from "./Vendor/forms/RegisterNewVender";
+import ForgetPassword from "./Vendor/forms/ForgetPassword";
 // ----------------
 function App() {
   return (
@@ -60,6 +62,8 @@ function App() {
       />
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="/new/vender" element={<RegisterNewVender />} />
+        <Route path="/forget/password" element={<ForgetPassword />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/Category" element={<Category />} />
         <Route path="/SubCategory" element={<SubCategory />} />
@@ -74,9 +78,11 @@ function App() {
         <Route path="/vendor-order" element={<Order />} />
         <Route path="/vendor/order/:id" element={<ViewOrder />} />
         <Route path="/vendor/return-order" element={<VReturnOrder />} />
-
         <Route path="/vendor/kyc" element={<VendorKyc />} />
         <Route path="/vendor/kyb" element={<VendorKyb />} />
+
+
+
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
         <Route path="/admin/banner" element={<AdminBanner />} />
