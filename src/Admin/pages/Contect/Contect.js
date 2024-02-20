@@ -67,7 +67,7 @@ const Contect = () => {
     const [contactAddress, setContactAddress] = useState('');
     const [tollfreeNo, setTollfreeNo] = useState('');
     const [submitLoading, setSubmitLoading] = useState(false);
-
+    const [errMsg, setErrMsg] = useState(null);
    
 
     const postHandler = async (e) => {
@@ -91,13 +91,12 @@ const Contect = () => {
         infoEmail,
         contactAddress,
         tollfreeNo,
-
       }
 
       setSubmitLoading(true);
       try {
         const { data } = await axios.post(
-          "https://alam-project-backend.vercel.app/api/v1/notification/sendNotification",
+          "https://alam-project-backend.vercel.app/api/v1/ContactDetails/addContactDetails",
           payload,
           Auth
         );
@@ -107,7 +106,7 @@ const Contect = () => {
         setSubmitLoading(false);
       } catch (e) {
         const msg = e.response.data.message;
-        // setErrMsg(msg);
+        setErrMsg(msg);
         setSubmitLoading(false);
       }
     };
@@ -137,7 +136,7 @@ const Contect = () => {
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>T</Form.Label>
+              <Form.Label>Twitter</Form.Label>
               <Form.Control
                 type="text"
                 value={twitter}
@@ -145,91 +144,131 @@ const Contect = () => {
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Title</Form.Label>
+              <Form.Label>Google</Form.Label>
               <Form.Control
                 type="text"
-                value={fb}
-                onChange={(e) => setFb(e.target.value)}
+                value={google}
+                onChange={(e) => setGoogle(e.target.value)}
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Title</Form.Label>
+              <Form.Label>Instagram</Form.Label>
               <Form.Control
                 type="text"
-                value={fb}
-                onChange={(e) => setFb(e.target.value)}
+                value={instagram}
+                onChange={(e) => setInstagram(e.target.value)}
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Title</Form.Label>
+              <Form.Label>Basketball</Form.Label>
               <Form.Control
                 type="text"
-                value={fb}
-                onChange={(e) => setFb(e.target.value)}
+                value={basketball}
+                onChange={(e) => setBasketball(e.target.value)}
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Title</Form.Label>
+              <Form.Label>Behance</Form.Label>
               <Form.Control
                 type="text"
-                value={fb}
-                onChange={(e) => setFb(e.target.value)}
+                value={behance}
+                onChange={(e) => setBehance(e.target.value)}
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Title</Form.Label>
+              <Form.Label>Bribbble</Form.Label>
               <Form.Control
                 type="text"
-                value={fb}
-                onChange={(e) => setFb(e.target.value)}
+                value={dribbble}
+                onChange={(e) => setDribbble(e.target.value)}
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Title</Form.Label>
+              <Form.Label>Pinterest</Form.Label>
               <Form.Control
                 type="text"
-                value={fb}
-                onChange={(e) => setFb(e.target.value)}
+                value={pinterest}
+                onChange={(e) => setPinterest(e.target.value)}
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Title</Form.Label>
+              <Form.Label>LinkedIn</Form.Label>
               <Form.Control
                 type="text"
-                value={fb}
-                onChange={(e) => setFb(e.target.value)}
+                value={linkedIn}
+                onChange={(e) => setLinkedIn(e.target.value)}
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Title</Form.Label>
+              <Form.Label>Youtube</Form.Label>
               <Form.Control
                 type="text"
-                value={fb}
-                onChange={(e) => setFb(e.target.value)}
+                value={youtube}
+                onChange={(e) => setYoutube(e.target.value)}
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Title</Form.Label>
+              <Form.Label>Address</Form.Label>
               <Form.Control
                 type="text"
-                value={fb}
-                onChange={(e) => setFb(e.target.value)}
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Title</Form.Label>
+              <Form.Label>Phone</Form.Label>
               <Form.Control
                 type="text"
-                value={fb}
-                onChange={(e) => setFb(e.target.value)}
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Title</Form.Label>
+              <Form.Label>SupportEmail</Form.Label>
               <Form.Control
                 type="text"
-                value={fb}
-                onChange={(e) => setFb(e.target.value)}
+                value={supportEmail}
+                onChange={(e) => setSupportEmail(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>OpeningTime</Form.Label>
+              <Form.Control
+                type="text"
+                value={openingTime}
+                onChange={(e) => setOpeningTime(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Info Email</Form.Label>
+              <Form.Control
+                type="text"
+                value={infoEmail}
+                onChange={(e) => setInfoEmail(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>ContactAddress</Form.Label>
+              <Form.Control
+                type="text"
+                value={contactAddress}
+                onChange={(e) => setContactAddress(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Map</Form.Label>
+              <Form.Control
+                type="text"
+                value={map}
+                onChange={(e) => setMap(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>TollfreeNo</Form.Label>
+              <Form.Control
+                type="text"
+                value={tollfreeNo}
+                onChange={(e) => setTollfreeNo(e.target.value)}
               />
             </Form.Group>
 
@@ -339,6 +378,10 @@ const Contect = () => {
                         <td>Basketball</td>
                       <td>{data?.basketball} </td>
                     </tr>
+                    {/* <tr >
+                        <td>Map</td>
+                      <td>{data?.map} </td>
+                    </tr> */}
                     <tr >
                         <td>Behance</td>
                       <td>{data?.behance} </td>
