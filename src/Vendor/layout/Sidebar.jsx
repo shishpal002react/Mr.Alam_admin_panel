@@ -48,16 +48,16 @@ const Sidebar = ({ hamb, setHamb }) => {
         link: "/dashboard ",
         name: "Dashboard",
       },
-      {
-        icon: <i className="fa-solid fa-file text-xl mr-3 rounded-full " />,
-        link: "/vendor/kyc ",
-        name: "KYC",
-      },
-      {
-        icon: <i className="fa-solid fa-book text-xl mr-3 rounded-full " />,
-        link: "/vendor/kyb ",
-        name: "KYB",
-      },
+      // {
+      //   icon: <i className="fa-solid fa-file text-xl mr-3 rounded-full " />,
+      //   link: "/vendor/kyc ",
+      //   name: "KYC",
+      // },
+      // {
+      //   icon: <i className="fa-solid fa-book text-xl mr-3 rounded-full " />,
+      //   link: "/vendor/kyb ",
+      //   name: "KYB",
+      // },
       {
         icon:  <i className="fa-solid fa-clipboard text-xl mr-3 rounded-full " />,
         link: "/Category",
@@ -92,11 +92,11 @@ const Sidebar = ({ hamb, setHamb }) => {
         link: "/vendor-order",
         name: "Order",
       },
-      {
-        icon: <i className="fa-solid fa-bag-shopping  text-xl mr-3 rounded-full"></i>,
-        link: "/vendor/return-order",
-        name: "Return Order",
-      },
+      // {
+      //   icon: <i className="fa-solid fa-bag-shopping  text-xl mr-3 rounded-full"></i>,
+      //   link: "/vendor/return-order",
+      //   name: "Return Order",
+      // },
     ];
   } else {
     nav = [

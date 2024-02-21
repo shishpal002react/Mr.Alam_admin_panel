@@ -152,7 +152,7 @@ const SubCategory = () => {
           fd,
           Auth
         );
-        toast.success(data.message);
+        toast.success("Sub-Category Updated Successfully");
         props.onHide();
         fetchData();
         setSubmitLoading(false);

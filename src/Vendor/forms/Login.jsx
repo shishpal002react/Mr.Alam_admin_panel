@@ -164,7 +164,7 @@ const Login = () => {
                   {loading ? (
                     <Spinner size="lg" animation="border" role="status" />
                   ) : (
-                    "Send Otp"
+                      "Verify Otp"
                   )}
                 </button>
               )

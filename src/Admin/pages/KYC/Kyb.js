@@ -25,7 +25,7 @@ const Kyb = () => {
     setLoading(true);
     try {
       const { data } = await axios.get(
-        "https://ecommerce-backend-ochre-phi.vercel.app/api/v1/admin/Kyblist",
+        "https://alam-project-backend.vercel.app/api/v1/static/getAboutUs",
         Auth
       );
       setData(data.data);
@@ -53,7 +53,7 @@ const Kyb = () => {
       setSubmitLoading(true);
       try {
         const { data } = await axios.put(
-          `https://ecommerce-backend-ochre-phi.vercel.app/api/v1/kyc/vendorKybVerification`,
+          `https://alam-project-backend.vercel.app/api/v1/kyc/vendorKybVerification`,
           payload,
           Auth
         );
@@ -139,7 +139,7 @@ const Kyb = () => {
             className="tracking-widest text-slate-900 font-semibold uppercase"
             style={{ fontSize: "1.5rem" }}
           >
-            All KYB's ( Total : {total} )
+           About us ( Total : {total} )
           </span>
         </div>
 

@@ -57,48 +57,49 @@ const Sidebar = ({ hamb, setHamb }) => {
       link: "/admin/order",
       name: "Order",
     },
-    {
-      icon: (
-        <i className="fa-solid fa-bag-shopping text-xl mr-3 rounded-full " />
-      ),
-      link: "/return-order",
-      name: "Return Order",
-    },
+    // {
+    //   icon: (
+    //     <i className="fa-solid fa-bag-shopping text-xl mr-3 rounded-full " />
+    //   ),
+    //   link: "/return-order",
+    //   name: "Return Order",
+    // },
     {
       icon: <i className="fa-solid fa-money-bill text-xl mr-3 rounded-full " />,
       link: "/admin/transaction",
       name: "Transaction",
     },
-    {
-      icon: <i className="fa-solid fa-file text-xl mr-3 rounded-full " />,
-      link: "/admin/kyc-list",
-      name: "Kyc List",
-    },
-    {
-      icon: <i className="fa-solid fa-file text-xl mr-3 rounded-full " />,
-      link: "/admin/kyb",
-      name: "Kyb List",
-    },
+    // {
+    //   icon: <i className="fa-solid fa-file text-xl mr-3 rounded-full " />,
+    //   link: "/admin/kyc-list",
+    //   name: "Kyc List",
+    // },
 
-    {
-      icon: <i className="fa-solid fa-code text-xl mr-3 rounded-full " />,
-      link: "/coupon",
-      name: "Coupon",
-    },
     {
       icon: <i className=" fa-solid fa-bell text-xl mr-3 rounded-full " />,
       link: "/notification",
       name: "Notification",
     },
     {
+      icon: <i className="fa-solid fa-file text-xl mr-3 rounded-full " />,
+      link: "/admin/kyb",
+      name: "FAQ",
+    },
+
+    {
+      icon: <i className="fa-solid fa-code text-xl mr-3 rounded-full " />,
+      link: "/coupon",
+      name: "Terms and Condition",
+    },
+    {
       icon: <i className=" fa-solid fa-ticket text-xl mr-3 rounded-full " />,
       link: "/admin/ticket",
-      name: "Ticket",
+      name: "Privacy",
     },
     {
       icon: <i className=" fa-solid fa-money-bill text-xl mr-3 rounded-full " />,
       link: "/admin/COD",
-      name: "COD",
+      name: "About us",
     },
     {
       icon: <i className=" fa-solid fa-money-bill text-xl mr-3 rounded-full " />,
