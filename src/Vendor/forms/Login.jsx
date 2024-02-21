@@ -12,9 +12,17 @@ const Login = () => {
   const [pass, setPass] = useState(false);
   const [inputpass, setInputpass] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  // const [venderName, setVenderName] = useState("")
+  const [phone, setPhone] = useState("");
+
+
   const [error, setError] = useState(false);
+
+  //set condition
+  const [otpVerifyNot, setOtpVerifyNot] = useState(true);
+  const [otp, setOtp] = useState("");
+  const [venderId, setVenderId] = useState("")
+
   const navigate = useNavigate();
 
   const submitHandler = async (e) => {
@@ -23,15 +31,36 @@ const Login = () => {
 
     try {
       const { data } = await axios.post(
-        "https://alam-project-backend.vercel.app/api/v1/vendor/loginwithphone",
+        `https://alam-project-backend.vercel.app/api/v1/vendor/loginwithphone`,
         {
-          phone: email,
-          password,
+          phone,
           userType: "VENDOR",
         }
       );
       localStorage.setItem("token", data.data.accessToken);
-      localStorage.setItem("AdminName", email)
+      toast.success("Otp send successfully");
+      setVenderId(data?.data?._id)
+      setLoading(false);
+      setOtpVerifyNot(false)
+    } catch (err) {
+      setLoading(false);
+      setError(true);
+    }
+  };
+
+  const verifyOptHandler = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      const { data } = await axios.post(
+        `https://alam-project-backend.vercel.app/api/v1/vendor/${venderId}`,
+        {
+          otp
+        }
+      );
+      localStorage.setItem("token", data.accessToken);
+      localStorage.setItem("AdminName", data?.data?.fullName);
       navigate("/dashboard");
       toast.success("Welcome Vender");
       setLoading(false);
@@ -40,6 +69,7 @@ const Login = () => {
       setError(true);
     }
   };
+
 
   return (
     <>
@@ -58,24 +88,38 @@ const Login = () => {
             ) : (
               ""
             )}
+            {/* <div className="shadow-2xl sm:w-96 border border-[rgb(241,146,46)] space-x-4 flex items-center w-64  p-2 rounded-md ">
+              <input
+                type="text"
+                placeholder="Enter name"
+                required
+                value={venderName}
+                onChange={(e) => setVenderName(e.target.value)}
+                className="outline-none px-0.5  bg-transparent tracking-wider w-full"
+              />
 
-            <div className="shadow-2xl sm:w-96 border border-[rgb(241,146,46)] space-x-4 flex items-center w-64  p-2 rounded-md">
+            </div> */}
+
+            <div className="shadow-2xl sm:w-96 border border-[rgb(241,146,46)] space-x-4 flex items-center w-64  p-2 rounded-md mt-3">
               <input
                 type="text"
                 placeholder="Enter phone number"
                 required
-                onChange={(e) => setEmail(e.target.value)}
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
                 className="outline-none px-0.5  bg-transparent tracking-wider w-full"
               />
               <FaPhone className="text-xl " />
             </div>
-            <div className="shadow-2xl sm:w-96 border border-[rgb(241,146,46)] space-x-4 flex items-center w-64  p-2 rounded-md mt-3">
-              <input
-                type={inputpass ? "text" : "password"}
-                placeholder="password"
-                name="password"
-                required
-                onChange={(e) => setPassword(e.target.value)}
+
+            {
+              !otpVerifyNot && (
+                <div className="shadow-2xl sm:w-96 border border-[rgb(241,146,46)] space-x-4 flex items-center w-64  p-2 rounded-md mt-3">
+                  <input
+                    type="text"
+                    placeholder="Enter otp"
+                    value={otp}
+                    onChange={(e) => setOtp(e.target.value)}
                 className="outline-none px-0.5  bg-transparent tracking-wider w-full  "
               />
 
@@ -89,18 +133,43 @@ const Login = () => {
                 {pass ? <VscEyeClosed /> : <VscEye />}
               </span>
             </div>
+              )
+            }
 
-            <button
-              type="submit"
-              className="EcommerceAdminLogin"
-              onClick={submitHandler}
-            >
-              {loading ? (
-                <Spinner size="lg" animation="border" role="status" />
-              ) : (
-                "LOG IN"
-              )}
-            </button>
+
+
+            {
+              otpVerifyNot && (
+                <button
+                  type="submit"
+                  className="EcommerceAdminLogin"
+                  onClick={submitHandler}
+                >
+                  {loading ? (
+                    <Spinner size="lg" animation="border" role="status" />
+                  ) : (
+                    "Send Otp"
+                  )}
+                </button>
+              )
+            }
+
+            {
+              !otpVerifyNot && (
+                <button
+                  type="submit"
+                  className="EcommerceAdminLogin"
+                  onClick={verifyOptHandler}
+                >
+                  {loading ? (
+                    <Spinner size="lg" animation="border" role="status" />
+                  ) : (
+                    "Send Otp"
+                  )}
+                </button>
+              )
+            }
+
             <br />
             <Link to="/admin-login">
               <button type="button" className="EcommerceAdminLogin">

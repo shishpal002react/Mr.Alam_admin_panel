@@ -35,7 +35,7 @@ const ProductVariant = () => {
     setLoading(true);
     try {
       const { data } = await axios.get(
-        `https://ecommerce-backend-ochre-phi.vercel.app/api/v1/vendor/ProductVarient/list?productId=${id}`,
+        `https://alam-project-backend.vercel.app/api/v1/vendor/ProductVarient/list?productId=${id}`,
         Auth
       );
       setData(data.data);
@@ -53,7 +53,7 @@ const ProductVariant = () => {
   const deleteHandler = async (id) => {
     try {
       const { data } = await axios.delete(
-        `https://ecommerce-backend-ochre-phi.vercel.app/api/v1/vendor/ProductVarient/delete/${id}`,
+        `https://alam-project-backend.vercel.app/api/v1/vendor/ProductVarient/delete/${id}`,
         Auth
       );
       const msg = data.message;
@@ -93,7 +93,7 @@ const ProductVariant = () => {
 
       try {
         const res = await axios.post(
-          "https://ecommerce-backend-ochre-phi.vercel.app/api/v1/vendor/ProductColor/add",
+          "https://alam-project-backend.vercel.app/api/v1/vendor/ProductColor/add",
           fd,
           Auth
         );
@@ -112,7 +112,7 @@ const ProductVariant = () => {
     const fetchColors = async () => {
       try {
         const res = await axios.get(
-          "https://ecommerce-backend-ochre-phi.vercel.app/api/v1/vendor/Color/list",
+          "https://alam-project-backend.vercel.app/api/v1/vendor/Color/list",
           Auth
         );
         setColors(res.data.data);
@@ -144,7 +144,7 @@ const ProductVariant = () => {
 
       try {
         const res = await axios.put(
-          `https://ecommerce-backend-ochre-phi.vercel.app/api/v1/vendor/ProductColor/edit/${variantId}`,
+          `https://alam-project-backend.vercel.app/api/v1/vendor/ProductColor/edit/${variantId}`,
           fd,
           Auth
         );

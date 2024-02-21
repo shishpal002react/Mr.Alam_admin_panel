@@ -27,7 +27,7 @@ const EditProduct = () => {
   const [ categoryName , setCategoryName ] = useState('')
   const [ subCategoryName , setsubCategoryName ] = useState('')
 
-  const Baseurl = `https://ecommerce-backend-ochre-phi.vercel.app/`;
+  const Baseurl = `https://alam-project-backend.vercel.app/`;
 
   const getProductDetail = async () => {
     try {
@@ -45,7 +45,7 @@ const EditProduct = () => {
   const getCategory = async () => {
     try {
       const res = await axios.get(
-        "https://ecommerce-backend-ochre-phi.vercel.app/api/v1/Category/allCategory"
+        "https://alam-project-backend.vercel.app/api/v1/Category/allCategory"
       );
       setCategoryArr(res.data.data);
     } catch (e) {
@@ -56,7 +56,7 @@ const EditProduct = () => {
   const getSubCategory = async (payload) => {
     try {
       const res = await axios.get(
-        `https://ecommerce-backend-ochre-phi.vercel.app/api/v1/SubCategory/allSubcategoryById/${payload}`
+        `https://alam-project-backend.vercel.app/api/v1/SubCategory/allSubcategoryById/${payload}`
       );
       setSubCatArr(res.data.data);
     } catch (e) {
@@ -97,7 +97,7 @@ const EditProduct = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        `https://ecommerce-backend-ochre-phi.vercel.app/api/v1/vendor/Product/add`,
+        `https://alam-project-backend.vercel.app/api/v1/vendor/Product/add`,
         fd,
         Auth
       );

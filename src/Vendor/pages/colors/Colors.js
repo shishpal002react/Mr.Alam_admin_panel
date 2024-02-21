@@ -23,6 +23,10 @@ const Colors = () => {
   const [modalShow, setModalShow] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  //color name and code
+  const [colorName, setColorName] = useState("");
+  const [colorCode, setColorCode] = useState("");
+
   const token = localStorage.getItem("token");
   const Auth = {
     headers: {
@@ -30,7 +34,7 @@ const Colors = () => {
     },
   };
 
-  const Baseurl = "https://ecommerce-backend-ochre-phi.vercel.app";
+  const Baseurl = "https://alam-project-backend.vercel.app";
 
   const fetchData = async () => {
     setLoading(true);
@@ -57,6 +61,13 @@ const Colors = () => {
     const [colorCode, setColorCode] = useState("");
     const [errMsg, setErrMsg] = useState(null);
     const [submitLoading, setSubmitLoading] = useState(false);
+
+    useEffect(() => {
+      if (props.show===true) {
+        setColor(props?.colorName);
+        setColorCode(props?.colorCode);
+      }
+    },[props])
 
     const payload = { colorCode, color };
 
@@ -85,7 +96,7 @@ const Colors = () => {
       setSubmitLoading(true);
       try {
         const { data } = await axios.put(
-          `https://ecommerce-backend-ochre-phi.vercel.app/api/v1/vendor/Color/edit/${id}`,
+          `${Baseurl}/api/v1/vendor/Color/edit/${id}`,
           payload,
           Auth
         );
@@ -188,6 +199,8 @@ const Colors = () => {
     <>
       <MyVerticallyCenteredModal
         show={modalShow}
+        colorCode={colorCode}
+        colorName={colorName}
         onHide={() => setModalShow(false)}
       />
 
@@ -254,6 +267,8 @@ const Colors = () => {
                               onClick={() => {
                                 setId(i._id);
                                 setEdit(true);
+                                setColorName(i.color);
+                                setColorCode(i.colorCode);
                                 setModalShow(true);
                               }}
                             />

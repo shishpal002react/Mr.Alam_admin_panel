@@ -62,7 +62,7 @@ const AdminProduct = () => {
   const getVendors = async () => {
     try{
       const { data } = await axios.get(
-        "https://ecommerce-backend-ochre-phi.vercel.app/api/v1/admin/getAllVendor"
+        "https://alam-project-backend.vercel.app/api/v1/admin/getAllVendor"
       );
       setVendors(data.data);
     }catch{}
@@ -71,7 +71,7 @@ const AdminProduct = () => {
   const fecthCategory = async () => {
     try {
       const res = await axios.get(
-        "https://ecommerce-backend-ochre-phi.vercel.app/api/v1/Category/allCategory"
+        "https://alam-project-backend.vercel.app/api/v1/Category/allCategory"
       );
       setCategoryArr(res.data.data);
     } catch {}
@@ -79,7 +79,7 @@ const AdminProduct = () => {
   const fecthSubCategory = async () => {
     try {
       const res = await axios.get(
-        "https://ecommerce-backend-ochre-phi.vercel.app/api/v1/SubCategory/all/Subcategory"
+        "https://alam-project-backend.vercel.app/api/v1/SubCategory/all/Subcategory"
       );
       setSubCatArr(res.data.data);
     } catch {}
@@ -87,9 +87,10 @@ const AdminProduct = () => {
 
   const fetchData = useCallback(async () => {
     setLoading(true);
+    // `https://ecommerce-backend-ochre-phi.vercel.app/api/v1/admin/Product/list?page=${page}&limit=${limit}&search=${search}&toDate=${FinalToDate}&fromDate=${FinalFromDate}&categoryId=${categoryId}&subcategoryId=${subcategoryId}&vendorId=${vendorId}`,
     try {
       const { data } = await axios.get(
-        `https://ecommerce-backend-ochre-phi.vercel.app/api/v1/admin/Product/list?page=${page}&limit=${limit}&search=${search}&toDate=${FinalToDate}&fromDate=${FinalFromDate}&categoryId=${categoryId}&subcategoryId=${subcategoryId}&vendorId=${vendorId}`,
+        `https://alam-project-backend.vercel.app/api/v1/admin/Product/list?page=${page}&limit=${limit}&search=${search}&toDate=${FinalToDate}&fromDate=${FinalFromDate}&categoryId=${categoryId}&subcategoryId=${subcategoryId}&vendorId=${vendorId}`,
         Auth
       );
       setData(data.data.docs);

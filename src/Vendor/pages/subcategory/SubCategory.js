@@ -63,7 +63,7 @@ const SubCategory = () => {
   const fetchData = useCallback(async () => {
     try {
       const { data } = await axios.get(
-        `https://ecommerce-backend-ochre-phi.vercel.app/api/v1/SubCategory/paginate/SubCategoriesSearch?page=${page}&limit=${limit}&search=${search}&toDate=${FinalToDate}&fromDate=${FinalFromDate}`
+        `https://alam-project-backend.vercel.app/api/v1/SubCategory/paginate/SubCategoriesSearch?page=${page}&limit=${limit}&search=${search}&toDate=${FinalToDate}&fromDate=${FinalFromDate}`
       );
       setData(data.data.docs);
       setTotal(data.data.total);
@@ -86,7 +86,7 @@ const SubCategory = () => {
   const deleteHandler = async (id) => {
     try {
       const { data } = await axios.delete(
-        `https://ecommerce-backend-ochre-phi.vercel.app/api/v1/SubCategory/deleteSubcategory/${id}`,
+        `https://alam-project-backend.vercel.app/api/v1/SubCategory/deleteSubcategory/${id}`,
         Auth
       );
       toast.success("Deleted Successfully");
@@ -111,7 +111,7 @@ const SubCategory = () => {
     const fetchCat = async () => {
       try {
         const res = await axios.get(
-          "https://ecommerce-backend-ochre-phi.vercel.app/api/v1/Category/allCategory"
+          "https://alam-project-backend.vercel.app/api/v1/Category/allCategory"
         );
         setCategoryArr(res.data.data);
       } catch {}
@@ -128,7 +128,7 @@ const SubCategory = () => {
       setSubmitLoading(true);
       try {
         const { data } = await axios.post(
-          "https://ecommerce-backend-ochre-phi.vercel.app/api/v1/SubCategory/addSubcategory",
+          "https://alam-project-backend.vercel.app/api/v1/SubCategory/addSubcategory",
           fd,
           Auth
         );
@@ -148,7 +148,7 @@ const SubCategory = () => {
       setSubmitLoading(true);
       try {
         const { data } = await axios.put(
-          `https://ecommerce-backend-ochre-phi.vercel.app/api/v1/SubCategory/updateSubcategory/${id}`,
+          `https://alam-project-backend.vercel.app/api/v1/SubCategory/updateSubcategory/${id}`,
           fd,
           Auth
         );

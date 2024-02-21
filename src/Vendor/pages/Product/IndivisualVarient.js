@@ -25,7 +25,7 @@ const IndivisualVarient = () => {
   const [imageModal, setImageModal] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const BaseUrl = "https://ecommerce-backend-ochre-phi.vercel.app/";
+  const BaseUrl = "https://alam-project-backend.vercel.app/";
 
   const token = localStorage.getItem("token");
   const Auth = {

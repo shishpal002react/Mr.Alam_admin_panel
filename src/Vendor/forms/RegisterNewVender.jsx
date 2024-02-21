@@ -135,7 +135,7 @@ const RegisterNewVender = () => {
                                 Admin Panel
                             </button>
                         </Link>
-                        <p style={{ textAlign: "right" }}>Register New Vender</p>
+                        <p style={{ textAlign: "right", color: "blue", cursor: "pointer" }} onClick={() => navigate("/")}>Login vender</p>
                     </section>
                 </form>
             </div>

@@ -22,7 +22,7 @@ const Order = () => {
   const fetchData = async () => {
     try {
       const { data } = await axios.get(
-        "https://ecommerce-backend-ochre-phi.vercel.app/api/v1/vendor/Orders",
+        "https://alam-project-backend.vercel.app/api/v1/vendor/Orders",
         Auth
       );
       setData(data.data);

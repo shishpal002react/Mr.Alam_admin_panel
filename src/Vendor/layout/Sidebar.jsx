@@ -24,7 +24,7 @@ const Sidebar = ({ hamb, setHamb }) => {
   const fetchKyc = async () => {
     try {
       const response = await axios.get(
-        "https://ecommerce-backend-ochre-phi.vercel.app/api/v1/vendor/getProfile",
+        "https://alam-project-backend.vercel.app/api/v1/vendor/getProfile",
         Auth
       );
       setProfile(response.data.data);

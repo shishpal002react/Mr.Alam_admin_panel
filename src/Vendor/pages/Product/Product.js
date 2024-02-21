@@ -57,7 +57,7 @@ const Product = () => {
   const fecthCategory = async () => {
     try {
       const res = await axios.get(
-        "https://ecommerce-backend-ochre-phi.vercel.app/api/v1/Category/allCategory"
+        "https://alam-project-backend.vercel.app/api/v1/Category/allCategory"
       );
       setCategoryArr(res.data.data);
     } catch {}
@@ -65,7 +65,7 @@ const Product = () => {
   const fecthSubCategory = async () => {
     try {
       const res = await axios.get(
-        "https://ecommerce-backend-ochre-phi.vercel.app/api/v1/SubCategory/all/Subcategory"
+        "https://alam-project-backend.vercel.app/api/v1/SubCategory/all/Subcategory"
       );
       setSubCatArr(res.data.data);
     } catch {}
@@ -75,7 +75,7 @@ const Product = () => {
     setLoading(true);
     try {
       const { data } = await axios.get(
-        `https://ecommerce-backend-ochre-phi.vercel.app/api/v1/vendor/Product/list?page=${page}&limit=${limit}&search=${search}&toDate=${FinalToDate}&fromDate=${FinalFromDate}&categoryId=${categoryId}&subcategoryId=${subcategoryId}`,
+        `https://alam-project-backend.vercel.app/api/v1/vendor/Product/list?page=${page}&limit=${limit}&search=${search}&toDate=${FinalToDate}&fromDate=${FinalFromDate}&categoryId=${categoryId}&subcategoryId=${subcategoryId}`,
         Auth
       );
       setData(data.data.docs);
@@ -107,7 +107,7 @@ const Product = () => {
   const deleteHandler = async (id) => {
     try {
       const { data } = await axios.delete(
-        `https://ecommerce-backend-ochre-phi.vercel.app/api/v1/vendor/Product/delete/${id}`,
+        `https://alam-project-backend.vercel.app/api/v1/vendor/Product/delete/${id}`,
         Auth
       );
       toast.success(data.message);

@@ -10,7 +10,7 @@ import HOC from "../../layout/HOC";
 const SingleProduct = () => {
   const { id } = useParams();
   const [data, setData] = useState({});
-  const BaseUrl = "https://ecommerce-backend-ochre-phi.vercel.app/";
+  const BaseUrl = "https://alam-project-backend.vercel.app/";
 
   const getOrder = async () => {
     try {

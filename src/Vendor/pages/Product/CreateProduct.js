@@ -27,7 +27,7 @@ const CreateProduct = () => {
   const getCategory = async () => {
     try {
       const res = await axios.get(
-        "https://ecommerce-backend-ochre-phi.vercel.app/api/v1/Category/allCategory"
+        "https://alam-project-backend.vercel.app/api/v1/Category/allCategory"
       );
       setCategoryArr(res.data.data);
     } catch (e) {
@@ -38,7 +38,7 @@ const CreateProduct = () => {
   const getSubCategory = async (payload) => {
     try {
       const res = await axios.get(
-        `https://ecommerce-backend-ochre-phi.vercel.app/api/v1/SubCategory/allSubcategoryById/${payload}`
+        `https://alam-project-backend.vercel.app/api/v1/SubCategory/allSubcategoryById/${payload}`
       );
       setSubCatArr(res.data.data);
     } catch (e) {
@@ -80,7 +80,7 @@ const CreateProduct = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        `https://ecommerce-backend-ochre-phi.vercel.app/api/v1/vendor/Product/add`,
+        `https://alam-project-backend.vercel.app/api/v1/vendor/Product/add`,
         fd,
         Auth
       );

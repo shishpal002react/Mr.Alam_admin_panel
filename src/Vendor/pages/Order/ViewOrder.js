@@ -9,7 +9,7 @@ import HOC from "../../layout/HOC";
 const ViewOrder = () => {
   const { id } = useParams();
   const [data, setData] = useState({});
-  const BaseUrl = "https://ecommerce-backend-ochre-phi.vercel.app/";
+  const BaseUrl = "https://alam-project-backend.vercel.app/";
 
   const token = localStorage.getItem("token");
   const Auth = {

@@ -25,7 +25,7 @@ const VReturnOrder = () => {
     setLoading(true);
     try {
       const { data } = await axios.get(
-        "https://ecommerce-backend-ochre-phi.vercel.app/api/v1/vendor/getcancelReturnOrder",
+        "https://alam-project-backend.vercel.app/api/v1/vendor/getcancelReturnOrder",
         Auth
       );
       setData(data.data);

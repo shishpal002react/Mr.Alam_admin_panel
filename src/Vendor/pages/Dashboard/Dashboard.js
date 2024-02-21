@@ -23,7 +23,7 @@ const Dashboard = () => {
     setLoading(true);
     try {
       const response = await axios.get(
-        `https://ecommerce-backend-ochre-phi.vercel.app/api/v1/vendor/dashboard`,
+        `https://alam-project-backend.vercel.app/api/v1/vendor/dashboard`,
         Auth
       );
       const data = response.data.data;

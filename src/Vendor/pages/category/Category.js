@@ -54,6 +54,7 @@ const Category = () => {
   }
 
   const token = localStorage.getItem("token");
+  console.log(token,"settoken value");
   const Auth = {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -63,7 +64,7 @@ const Category = () => {
   const fetchData = useCallback(async () => {
     try {
       const { data } = await axios.get(
-        `https://ecommerce-backend-ochre-phi.vercel.app/api/v1/Category/paginateCategoriesSearch?page=${page}&limit=${limit}&search=${search}&toDate=${FinalToDate}&fromDate=${FinalFromDate}`
+        `https://alam-project-backend.vercel.app/api/v1/Category/paginateCategoriesSearch?page=${page}&limit=${limit}&search=${search}&toDate=${FinalToDate}&fromDate=${FinalFromDate}`
       );
       setData(data.data.docs);
       setTotal(data.data.total);
@@ -86,7 +87,7 @@ const Category = () => {
   const deleteHandler = async (id) => {
     try {
       const { data } = await axios.delete(
-        `https://ecommerce-backend-ochre-phi.vercel.app/api/v1/Category/deleteCategory/${id}`,
+        `https://alam-project-backend.vercel.app/api/v1/Category/deleteCategory/${id}`,
         Auth
       );
       toast.success(data.message);
@@ -109,7 +110,7 @@ const Category = () => {
       setSubmitLoading(true);
       try {
         const { data } = await axios.post(
-          "https://ecommerce-backend-ochre-phi.vercel.app/api/v1/Category/addCategory",
+          "https://alam-project-backend.vercel.app/api/v1/Category/addCategory",
           payload,
           Auth
         );
@@ -129,7 +130,7 @@ const Category = () => {
       setSubmitLoading(true);
       try {
         const { data } = await axios.put(
-          `https://ecommerce-backend-ochre-phi.vercel.app/api/v1/Category/updateCategory/${id}`,
+          `https://alam-project-backend.vercel.app/api/v1/Category/updateCategory/${id}`,
           payload,
           Auth
         );
@@ -181,8 +182,8 @@ const Category = () => {
               <Form.Select onChange={(e) => setGender(e.target.value)}>
                 <option> {gender} </option>
                 <option value="kid">Kid</option>
-                <option value="women">Women</option>
-                <option value="men">Men</option>
+                <option value="other">other</option>
+               
               </Form.Select>
             </Form.Group>
 
