@@ -41,7 +41,7 @@ import Kyb from "./Admin/pages/KYC/Faq";
 import KybView from "./Admin/pages/KYC/KybView";
 import ReturnOrder from "./Admin/pages/Order/ReturnOrder";
 import Ticket from "./Admin/pages/Ticket/Privacy";
-import COD from "./Admin/pages/COD/COD";
+import COD from "./Admin/pages/COD/AboutUs";
 import VReturnOrder from "./Vendor/pages/Order/VReturnOrder";
 import Contect from "./Admin/pages/Contect/Contect";
 import RegisterNewVender from "./Vendor/forms/RegisterNewVender";
@@ -49,6 +49,7 @@ import ForgetPassword from "./Vendor/forms/ForgetPassword";
 import Faq from "./Admin/pages/KYC/Faq";
 import TermandCondition from "./Admin/pages/Coupon/TermandCondition";
 import Privacy from "./Admin/pages/Ticket/Privacy";
+import AboutUs from "./Admin/pages/COD/AboutUs";
 // ----------------
 function App() {
   return (
@@ -106,7 +107,7 @@ function App() {
         <Route path="/kyb-view/:id" element={<KybView />} />
         <Route path="/return-order" element={<ReturnOrder />} />
         <Route path="/admin/privacy" element={<Privacy />} />
-        <Route path="/admin/COD" element={<COD />} />
+        <Route path="/admin/aboutus" element={<AboutUs />} />
       </Routes>
     </>
   );

@@ -6,7 +6,7 @@ import { Table, Modal, Form, Button, Alert, Spinner } from "react-bootstrap";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const TermandCondition = () => {
+const AboutUs = () => {
   const [showModel,setShowModel]=useState(false)
   const [modalShowEdit, setModalShowEdit] = useState(false);
   const [data, setData] = useState([]);
@@ -15,8 +15,8 @@ const TermandCondition = () => {
   const [loading, setLoading] = useState(false);
 
   //edit state
-  const [editTerms,setEditTerms]=useState("");
-
+  const [questionEdit,setQuestionEdit]=useState("");
+  const [answerEdit,setAnswerEdit]=useState("");
 
   const token = localStorage.getItem("token");
   const Auth = {
@@ -29,7 +29,7 @@ const TermandCondition = () => {
     setLoading(true);
     try {
       const { data } = await axios.get(
-        "https://alam-project-backend.vercel.app/api/v1/static/getTerms",
+        "https://alam-project-backend.vercel.app/api/v1/static/getAboutUs",
         Auth
       );
       setData(data.data);
@@ -49,7 +49,7 @@ const TermandCondition = () => {
   const deleteHandler = async (id) => {
     try {
       const { data } = await axios.delete(
-        `https://alam-project-backend.vercel.app/api/v1/static/terms/${id}`,
+        `https://alam-project-backend.vercel.app/api/v1/static/aboutUs/${id}`,
         Auth
       );
       toast.success(data.message);
@@ -62,8 +62,8 @@ const TermandCondition = () => {
 
   // post model
   function MyVerticallyCenteredModal(props) {
-    const [terms, setTerms] = useState("");
-
+    const [question, setQuestion] = useState("");
+    const [answer, setAnswer] = useState("");
     const [errMsg, setErrMsg] = useState(null);
     const [submitLoading, setSubmitLoading] = useState(false);
 
@@ -73,8 +73,8 @@ const TermandCondition = () => {
       setSubmitLoading(true);
       try {
         const { data } = await axios.post(
-          `https://alam-project-backend.vercel.app/api/v1/static/createTerms`,
-          {terms},
+          `https://alam-project-backend.vercel.app/api/v1/static/createAboutus`,
+          { title:question, desc:answer },
           Auth
         );
         toast.success(data.message);
@@ -97,7 +97,7 @@ const TermandCondition = () => {
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
        
-            Edit Terms
+            Edit Aboutus
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -112,15 +112,24 @@ const TermandCondition = () => {
 
           <Form onSubmit={postHandler}>
             <Form.Group className="mb-3">
-              <Form.Label>Terms</Form.Label>
+              <Form.Label>Title</Form.Label>
               <Form.Control
                 type="text"
                 required
-                value={terms}
-                onChange={(e) => setTerms(e.target.value)}
+                value={question}
+                onChange={(e) => setQuestion(e.target.value)}
               />
             </Form.Group>
-          
+            <Form.Group className="mb-3">
+              <Form.Label>Description</Form.Label>
+              <Form.Control
+                as="textarea"
+                rows={3}
+                required
+                value={answer}
+                onChange={(e) => setAnswer(e.target.value)}
+              />
+            </Form.Group>
 
             <Button
               style={{
@@ -146,15 +155,15 @@ const TermandCondition = () => {
 
   // edit model
   function MyVerticallyCenteredModalEdit(props) {
-    const [terms, setTerms] = useState("");
-  
+    const [question, setQuestion] = useState("");
+    const [answer, setAnswer] = useState("");
     const [errMsg, setErrMsg] = useState(null);
     const [submitLoading, setSubmitLoading] = useState(false);
 
     useEffect(() => {
       if (props.show === true) {
-        setTerms(editTerms);
-    
+        setQuestion(questionEdit);
+        setAnswer(answerEdit);
       }
     }, [props]);
 
@@ -163,8 +172,8 @@ const TermandCondition = () => {
       setSubmitLoading(true);
       try {
         const { data } = await axios.put(
-          `https://alam-project-backend.vercel.app/api/v1/static/faq/${id}`,
-          { terms},
+          `https://alam-project-backend.vercel.app/api/v1/static/aboutUs/${id}`,
+          { title:question, desc:answer },
           Auth
         );
         toast.success(data.message);
@@ -187,7 +196,7 @@ const TermandCondition = () => {
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
        
-            Edit Terms and condition
+            Edit Aboutus
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -202,15 +211,24 @@ const TermandCondition = () => {
 
           <Form onSubmit={postHandler}>
             <Form.Group className="mb-3">
-              <Form.Label>Terms</Form.Label>
+              <Form.Label>Title</Form.Label>
               <Form.Control
                 type="text"
                 required
-                value={terms}
-                onChange={(e) => setTerms(e.target.value)}
+                value={question}
+                onChange={(e) => setQuestion(e.target.value)}
               />
             </Form.Group>
-          
+            <Form.Group className="mb-3">
+              <Form.Label>Description</Form.Label>
+              <Form.Control
+                as="textarea"
+                rows={3}
+                required
+                value={answer}
+                onChange={(e) => setAnswer(e.target.value)}
+              />
+            </Form.Group>
 
             <Button
               style={{
@@ -255,7 +273,7 @@ const TermandCondition = () => {
             className="tracking-widest text-slate-900 font-semibold uppercase"
             style={{ fontSize: "1.5rem" }}
           >
-            Term and condition( Total : {total} )
+            About Us( Total : {total} )
           </span>
           <button type="button"
             onClick={() => {
@@ -263,7 +281,7 @@ const TermandCondition = () => {
             }}
             className="md:py-2 px-3 md:px-4 py-1 rounded-sm bg-[#0c0c0c] text-white tracking-wider"
           >
-            Add Term and Condition
+            Add About Us
           </button>
         </div>
 
@@ -275,15 +293,15 @@ const TermandCondition = () => {
               className="loadingSpin"
             />
           ) : data?.length === 0 || !data ? (
-            <Alert>KYB Not Found</Alert>
+            <Alert>Aboutus Not Found</Alert>
           ) : (
             <>
               <div className="overFlowCont">
                 <Table>
                   <thead>
                     <tr>
-                      <th>Terms</th>
-                    
+                      <th>Title</th>
+                      <th>Description</th>
                       <th></th>
                     </tr>
                   </thead>
@@ -291,8 +309,8 @@ const TermandCondition = () => {
                   <tbody>
                     {data?.map((i, index) => (
                       <tr key={index}>
-                        <td>{i?.terms}</td>
-                       
+                        <td>{i?.title}</td>
+                        <td>{i?.desc}</td>
                         <td>
                           <i
                             className="fa-solid fa-trash"
@@ -302,8 +320,8 @@ const TermandCondition = () => {
                             onClick={() => {
                               setModalShowEdit(true);
                               setId(i._id);
-                              setEditTerms(i.terms);
-                              
+                              setQuestionEdit(i.question);
+                              setAnswerEdit(i.answer);
                             }}
                               
                             className="fa-solid fa-pen-to-square"
@@ -322,4 +340,4 @@ const TermandCondition = () => {
   );
 };
 
-export default HOC(TermandCondition);
+export default HOC(AboutUs);

@@ -98,7 +98,7 @@ const Sidebar = ({ hamb, setHamb }) => {
     },
     {
       icon: <i className=" fa-solid fa-money-bill text-xl mr-3 rounded-full " />,
-      link: "/admin/COD",
+      link: "/admin/aboutus",
       name: "About us",
     },
     {

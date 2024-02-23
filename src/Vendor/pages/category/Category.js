@@ -61,6 +61,22 @@ const Category = () => {
     },
   };
 
+  const getProduct=async()=>{
+    try {
+      const { data } = await axios.get(
+        `https://alam-project-backend.vercel.app/api/v1/Category/allCategory`,
+        Auth
+      );
+     setData(data?.data);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  useEffect(()=>{
+    getProduct();
+  },[])
+
   const fetchData = useCallback(async () => {
     try {
       const { data } = await axios.get(
@@ -92,6 +108,7 @@ const Category = () => {
       );
       toast.success(data.message);
       fetchData();
+      getProduct();
     } catch (e) {
       console.log(e);
     }
@@ -116,6 +133,7 @@ const Category = () => {
         );
         toast.success(data.message);
         props.onHide();
+        getProduct();
         fetchData();
         setSubmitLoading(false);
       } catch (e) {
@@ -136,6 +154,7 @@ const Category = () => {
         );
         toast.success(data.message);
         props.onHide();
+        getProduct();
         fetchData();
         setSubmitLoading(false);
       } catch (e) {

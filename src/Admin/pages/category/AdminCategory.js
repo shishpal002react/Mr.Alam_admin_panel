@@ -268,7 +268,7 @@ const AdminCategory = () => {
       setSubmitLoading(true);
       try {
         const { data } = await axios.put(
-          `https://ecommerce-backend-ochre-phi.vercel.app/api/v1/Category/approvedRejectCategory/${id}`,
+          `https://alam-project-backend.vercel.app/api/v1/Category/approvedRejectCategory/${id}`,
           payload,
           Auth
         );
