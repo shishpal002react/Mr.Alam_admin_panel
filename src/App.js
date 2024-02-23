@@ -34,18 +34,21 @@ import Kyc from "./Admin/pages/KYC/Kyc";
 import VendorKyc from "./Vendor/pages/KYC/VendorKyc";
 import User from "./Admin/pages/User/User";
 import Vendor from "./Admin/pages/Vendor/Vendor";
-import Coupon from "./Admin/pages/Coupon/Coupon";
+import Coupon from "./Admin/pages/Coupon/TermandCondition";
 import Notification from "./Admin/pages/Notification/Notification";
 import VendorKyb from "./Vendor/pages/KYC/VendorKyb";
-import Kyb from "./Admin/pages/KYC/Kyb";
+import Kyb from "./Admin/pages/KYC/Faq";
 import KybView from "./Admin/pages/KYC/KybView";
 import ReturnOrder from "./Admin/pages/Order/ReturnOrder";
-import Ticket from "./Admin/pages/Ticket/Ticket";
+import Ticket from "./Admin/pages/Ticket/Privacy";
 import COD from "./Admin/pages/COD/COD";
 import VReturnOrder from "./Vendor/pages/Order/VReturnOrder";
 import Contect from "./Admin/pages/Contect/Contect";
 import RegisterNewVender from "./Vendor/forms/RegisterNewVender";
 import ForgetPassword from "./Vendor/forms/ForgetPassword";
+import Faq from "./Admin/pages/KYC/Faq";
+import TermandCondition from "./Admin/pages/Coupon/TermandCondition";
+import Privacy from "./Admin/pages/Ticket/Privacy";
 // ----------------
 function App() {
   return (
@@ -96,13 +99,13 @@ function App() {
         <Route path="/admin/order/:id" element={<AdminViewOrder />} />
         <Route path="/admin/transaction" element={<Transaction />} />
         <Route path="/admin/kyc-list" element={<Kyc />} />
-        <Route path="/admin/kyb" element={<Kyb />} />
-        <Route path="/coupon" element={<Coupon />} />
+        <Route path="/admin/faq" element={<Faq />} />
+        <Route path="/termandcondition" element={<TermandCondition />} />
         <Route path="/notification" element={<Notification />} />
         <Route path="/contect" element={<Contect />} />
         <Route path="/kyb-view/:id" element={<KybView />} />
         <Route path="/return-order" element={<ReturnOrder />} />
-        <Route path="/admin/ticket" element={<Ticket />} />
+        <Route path="/admin/privacy" element={<Privacy />} />
         <Route path="/admin/COD" element={<COD />} />
       </Routes>
     </>

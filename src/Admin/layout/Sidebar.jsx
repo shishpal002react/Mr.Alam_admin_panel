@@ -82,18 +82,18 @@ const Sidebar = ({ hamb, setHamb }) => {
     },
     {
       icon: <i className="fa-solid fa-file text-xl mr-3 rounded-full " />,
-      link: "/admin/kyb",
+      link: "/admin/faq",
       name: "FAQ",
     },
 
     {
       icon: <i className="fa-solid fa-code text-xl mr-3 rounded-full " />,
-      link: "/coupon",
+      link: "/termandcondition",
       name: "Terms and Condition",
     },
     {
       icon: <i className=" fa-solid fa-ticket text-xl mr-3 rounded-full " />,
-      link: "/admin/ticket",
+      link: "/admin/privacy",
       name: "Privacy",
     },
     {
